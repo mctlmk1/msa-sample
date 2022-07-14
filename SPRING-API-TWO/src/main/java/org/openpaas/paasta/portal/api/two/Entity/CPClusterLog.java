@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -33,6 +35,10 @@ public class CPClusterLog {
      * 필드와 테이블의 컬럼을 매핑시켜준다. 생략이 가능하며, 생략시 필드의 이름이 테이블의 컬럼으로 자동으로 매핑이된다.
      */
     @Id
+    @Column(name = "seq_no", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long seqNo;
+    
     @Column(name = "cluster_id", nullable = false)
     private String clusterId;
 
@@ -64,6 +70,14 @@ public class CPClusterLog {
     @Transient
     private String searchKeyword;
 
+    public long getSeqNo() {
+        return seqNo;
+    }
+
+    public void setSeqNo(long seqNo) {
+        this.seqNo = seqNo;
+    }
+    
     public String getClusterId() {
         return clusterId;
     }
@@ -105,6 +119,6 @@ public class CPClusterLog {
 
     @Override
     public String toString() {
-        return "CPClusterLog {" + "clusterId=" + clusterId + ", processNo='" + processNo + '\'' + ", logMessage='" + logMessage + '\'' + ", regTimestamp='" + regTimestamp + '\'' + '}';
+        return "CPClusterLog {" + "seqNo=" + seqNo + "," + "clusterId=" + clusterId + ", processNo='" + processNo + '\'' + ", logMessage='" + logMessage + '\'' + ", regTimestamp='" + regTimestamp + '\'' + '}';
     }
 }

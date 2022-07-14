@@ -44,6 +44,11 @@ public class DbService {
     @HystrixCommand(commandKey = "getCPClusterLogList")
     public List<CPClusterLog> getCPClusterLogList() {
     	LOGGER.info("getCPClusterLogList service in ");
+    	long cnt = cpClusterLogRepository.count();
+    	LOGGER.info("getCPClusterLogList service count print ");
+    	LOGGER.info("Count = " + cnt);
+    	//CPClusterLog aa = cpClusterLogRepository.f
+    	//LOGGER.info("<> = " + aa.toString());
         return cpClusterLogRepository.findAll();
     }
 

@@ -44,6 +44,9 @@ public class DbController {
     public Map getCPClusterLogList(HttpServletRequest request) throws Exception {
     	LOGGER.info("############# getCPClusterLogList Start #############");
         List<CPClusterLog> resultList = dbService.getCPClusterLogList();
+        for(CPClusterLog aa : resultList) {
+        	LOGGER.info(aa.toString());
+        }
         Map rs = new HashMap();
         rs.put("result", resultList);
     	return null;
